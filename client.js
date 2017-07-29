@@ -30,11 +30,14 @@ function displayNextPerson() {
 
     var person = peopleArray[index];
 
-    $('.container').children().remove(); // empty the #container div
+    // empty the .container div, then add the appropriate data
+    $('.container').children().remove(); 
     $('.container').append("<p class=\"shoutout\">\"" + person.shoutout + "\"</p>");
     $('.container').append("<p class=\"name\"> -- " + person.name + "</p>");
 
-
+    // empty the #trackingDiv, then add the appropriate data
+    $('#trackingDiv').children().remove();
+    $('#trackingDiv').append("<p class=\"trackingP\">" + (index+1) + "/" + peopleArray.length + "</p>");
 
     // this is for pro mode
     // setTimeout(function () {
@@ -61,6 +64,10 @@ function displayPrevPerson() {
     $('.container').append("<p class=\"shoutout\">\"" + person.shoutout + "\"</p>");
     $('.container').append("<p class=\"name\"> -- " + person.name + "</p>");
 
+    // empty the #trackingDiv, then add the appropriate data
+    $('#trackingDiv').children().remove();
+    $('#trackingDiv').append("<p class=\"trackingP\">" + (index+1) + "/" + peopleArray.length + "</p>");
+    
     // this is for pro mode
     // setTimeout(function () {
     //     displayNextPerson(index + 1);
