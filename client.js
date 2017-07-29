@@ -9,22 +9,31 @@
 */
 
 // global index variable, because passing it around is a pain
-var index = 0;
+var index = -1;
+for (var i = 0; i < peopleArray.length; i++) {
+    console.log('index', i, 'person', peopleArray[i].name);    
+}
+console.log('peopleArray.length', peopleArray.length);
 
 
 // displays the next person in the carousel, then returns the index of the next person
 function displayNextPerson() {
-    console.log('displayNextPerson called');
+    console.log('displayNextPerson called with index', index);
+    
     
     // if we're at the end of the array, loop back around to the front
-    if(index == peopleArray.length) {
+    if(index == peopleArray.length-1) {
         index = 0;
     } else {
         index++;
     }
 
+    var person = peopleArray[index];
+
     $('.container').children().remove(); // empty the #container div
-    $('.container').append("<p>Example Content Index: " + index + "</p>");
+    $('.container').append("<p class=\"shoutout\">\"" + person.shoutout + "\"</p>");
+    $('.container').append("<p class=\"name\"> -- " + person.name + "</p>");
+
 
 
     // this is for pro mode
@@ -37,17 +46,20 @@ function displayNextPerson() {
 
 // displays the previous person in the carousel, then returns the index of the next person
 function displayPrevPerson() {
-    console.log('displayPrevPerson called');
+    console.log('displayPrevPerson called with index', index);
     
     // if we're at the beginning of the array, loop back around to the end
     if(index === 0) {
-        index = peopleArray.length;
+        index = peopleArray.length-1;
     } else {
         index--;
     }
 
+    var person = peopleArray[index];
+
     $('.container').children().remove(); // empty the #container div
-    $('.container').append("<p>Example Content Index: " + index + "</p>");
+    $('.container').append("<p class=\"shoutout\">\"" + person.shoutout + "\"</p>");
+    $('.container').append("<p class=\"name\"> -- " + person.name + "</p>");
 
     // this is for pro mode
     // setTimeout(function () {
@@ -59,7 +71,7 @@ function displayPrevPerson() {
 // execute code here
 $(document).ready(function () {
 
-    displayNextPerson(index);
+    displayNextPerson();
     
     $('#nextButton').on('click', displayNextPerson);
     $('#prevButton').on('click', displayPrevPerson);
