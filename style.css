@@ -18,8 +18,9 @@ body {
     background-color: white;
     border-radius: 30px;
     padding: 10px;
-    width: 35%;
+    width: 300px;
     display:none;
+    position:relative;
 }
 
 #trackingDiv {

@@ -41,8 +41,8 @@ function displayNextPerson() {
     var person = peopleArray[index];
 
     // empty the .container div, then add the appropriate data
-    $('.container').children().fadeOut(300, displayUpdate);
-    $('#speechArrow').fadeOut(300);
+    $('.container').children().add('#speechArrow').fadeOut({queue: false, complete: displayUpdate});
+    // $('#speechArrow').fadeOut(300);
 
     // empty the #trackingDiv, then add the appropriate data
     $('#trackingDiv').children().remove();
@@ -66,8 +66,8 @@ function displayPrevPerson() {
 
     var person = peopleArray[index];
 
-    $('.container').children().fadeOut(300, displayUpdate);
-    $('#speechArrow').fadeOut(300);
+    $('.container').children().add('#speechArrow').fadeOut({queue: false, complete: displayUpdate});
+    // $('#speechArrow').fadeOut(300);
 
     // setTimeout(displayUpdate, 350);
 
@@ -111,12 +111,22 @@ function prevClick() {
 
 function displayUpdate() {
     var person = peopleArray[index];
-    $('.container').hide();
+
+    var newXposition = Math.random() * (document.documentElement.clientWidth - 360);
+    var newYposition = Math.random() * (document.documentElement.clientHeight - 300);
+
+    $content = $('.container').add('#speechArrow');
+    $($content).hide();
     $('.container').children().remove();
     $('.container').append("<p class=\"shoutout\">\"" + person.shoutout + "\"</p>");
     $('.container').append("<p class=\"name\"> -- " + person.name + "</p>");
-    $('.container').fadeIn(300);
-    $('#speechArrow').fadeIn(300);    
+    $('.container').css('left', newXposition);
+    $('.container').css('top', newYposition);
+    $('#speechArrow').css('left', newXposition + 40);
+    $('#speechArrow').css('top', newYposition - 20);
+    
+    $($content).fadeIn({queue: false});
+    //$('#speechArrow').fadeIn(300);    
 }
 // execute code here
 $(document).ready(function () {
@@ -129,3 +139,14 @@ $(document).ready(function () {
     $('#prevButton').on('click', prevClick);
 
 });
+
+
+
+
+/* TODO
+
+put speech arrow in jquery selector with container div to sync fades
+figure out what the fuck to do about the 'blank' spot between fades
+ - possibly randomize the div position, that would mask it anyway
+
+ */
