@@ -9,7 +9,7 @@ body {
 #speechArrow {
     position:relative;
     left: 40px;
-    bottom: 20px;
+    top: 5px;
     display:none;
 }
 

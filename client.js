@@ -123,7 +123,7 @@ function displayUpdate() {
     $('.container').css('left', newXposition);
     $('.container').css('top', newYposition);
     $('#speechArrow').css('left', newXposition + 40);
-    $('#speechArrow').css('top', newYposition - 20);
+    $('#speechArrow').css('top', newYposition - 5);
     
     $($content).fadeIn({queue: false});
     //$('#speechArrow').fadeIn(300);    
