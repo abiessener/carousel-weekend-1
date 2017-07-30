@@ -53,3 +53,19 @@ button {
     text-align: right;
     font-weight: bold;
 }
+
+#trackingDiv {
+    color:white;
+    vertical-align:bottom;
+    display:inline;
+    position: absolute;
+    bottom: 5px;
+    right:10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 3px;    
+}
+
+.trackingP {
+    margin: 2px;
+}
