@@ -126,8 +126,11 @@ $(document).ready(function () {
 
 /* TODO
 
-put speech arrow in jquery selector with container div to sync fades
-figure out what the fuck to do about the 'blank' spot between fades
- - possibly randomize the div position, that would mask it anyway
+* put speech arrow in jquery selector with container div to sync fades
+    - DONE, this helps a little bit
 
+* Wrap container and speecharrow in a div and fade that to REALLY sync fades
+    - I cannot for the life of me figure out how to do this. Trying to wrap both in a div makes that wrapper have a height of zero and thus nothing displays. Bah! 
+
+* add minimum width/height to background image while maintaining aspect ratio
  */
