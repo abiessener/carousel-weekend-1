@@ -1,16 +1,13 @@
+html {
+    min-width: 500px;
+}
+
 body {
     background-image: url("background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #222;
     min-width: 500px;
-}
-
-#speechArrow {
-    position:relative;
-    left: 40px;
-    top: 5px;
-    display:none;
 }
 
 .container {
@@ -23,8 +20,22 @@ body {
     position:relative;
 }
 
-#trackingDiv {
-    float: right;
+#speechArrow {
+    position:relative;
+    left: 40px;
+    top: 5px;
+    display:none;
+}
+
+.shoutout {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+.name {
+    text-align: right;
+    font-weight: bold;
 }
 
 #controls {
@@ -53,16 +64,6 @@ button {
     background-color: orangered;
 }
 
-.shoutout {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.1em;
-    font-style: italic;
-}
-.name {
-    text-align: right;
-    font-weight: bold;
-}
-
 #trackingDiv {
     color:white;
     vertical-align:bottom;
@@ -72,7 +73,8 @@ button {
     right:10px;
     border: 2px solid white;
     border-radius: 5px;
-    padding: 3px;    
+    padding: 3px; 
+    float:right;   
 }
 
 .trackingP {
