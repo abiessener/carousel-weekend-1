@@ -24,24 +24,33 @@ lastClicked = lastClicked.getTime();
 // console.log('peopleArray.length', peopleArray.length);
 
 
-// displays the next person in the carousel, then returns the index of the next person
-function displayNextPerson() {
+// takes a bool parameter, and displays the next person in the carousel if true or previous if false
+function displayNextPerson(next) {
     // console.log('displayNextPerson called with index', index);
 
-
-
-
-    // if we're at the end of the array, loop back around to the front
-    if (index == peopleArray.length - 1) {
-        index = 0;
+    if (next) {
+        // if we're at the end of the array, loop back around to the front
+        if (index == peopleArray.length - 1) {
+            index = 0;
+        } else {
+            index++;
+        }
     } else {
-        index++;
+        // if we're at the beginning of the array, loop back around to the end
+        if (index === 0) {
+            index = peopleArray.length - 1;
+        } else {
+            index--;
+        }
     }
 
     var person = peopleArray[index];
 
     // empty the .container div, then add the appropriate data
-    $('.container').children().add('#speechArrow').fadeOut({queue: false, complete: displayUpdate});
+    $('.container').children().add('#speechArrow').fadeOut({
+        queue: false,
+        complete: displayUpdate
+    });
     // $('#speechArrow').fadeOut(300);
 
     // empty the #trackingDiv, then add the appropriate data
@@ -53,32 +62,6 @@ function displayNextPerson() {
     setTimeout(carouselTimeOut, 10000);
 }
 
-// displays the previous person in the carousel, then returns the index of the next person
-function displayPrevPerson() {
-    // console.log('displayPrevPerson called with index', index);
-
-    // if we're at the beginning of the array, loop back around to the end
-    if (index === 0) {
-        index = peopleArray.length - 1;
-    } else {
-        index--;
-    }
-
-    var person = peopleArray[index];
-
-    $('.container').children().add('#speechArrow').fadeOut({queue: false, complete: displayUpdate});
-    // $('#speechArrow').fadeOut(300);
-
-    // setTimeout(displayUpdate, 350);
-
-    // empty the #trackingDiv, then add the appropriate data
-    $('#trackingDiv').children().remove();
-    $('#trackingDiv').append("<p class=\"trackingP\">" + (index + 1) + "/" + peopleArray.length + "</p>");
-
-    // call the timeout function, so that the carousel will update if another button isn't clicked within 10 seconds
-
-    setTimeout(carouselTimeOut, 10000);
-}
 
 // updates the display if the current time is more than ten seconds since a button was last clicked. Returns nothing. ONLY CALLED by itself and the next/prev button handlers
 function carouselTimeOut() {
@@ -92,7 +75,7 @@ function carouselTimeOut() {
     // console.log('currentTime', currentTime);
 
     if (currentTime > lastClicked + 9900) {
-        displayNextPerson();
+        displayNextPerson(true);
     }
 }
 
@@ -100,13 +83,13 @@ function carouselTimeOut() {
 function nextClick() {
     var currentTime = new Date();
     lastClicked = currentTime.getTime();
-    displayNextPerson();
+    displayNextPerson(true);
 }
 
 function prevClick() {
     var currentTime = new Date();
     lastClicked = currentTime.getTime();
-    displayPrevPerson();
+    displayNextPerson(false);
 }
 
 function displayUpdate() {
@@ -124,8 +107,10 @@ function displayUpdate() {
     $('.container').css('top', newYposition);
     $('#speechArrow').css('left', newXposition + 40);
     $('#speechArrow').css('top', newYposition - 5);
-    
-    $($content).fadeIn({queue: false});
+
+    $($content).fadeIn({
+        queue: false
+    });
     //$('#speechArrow').fadeIn(300);    
 }
 // execute code here
@@ -133,7 +118,7 @@ $(document).ready(function () {
 
 
 
-    displayNextPerson();
+    displayNextPerson(true);
 
     $('#nextButton').on('click', nextClick);
     $('#prevButton').on('click', prevClick);
