@@ -42,7 +42,7 @@ function displayNextPerson() {
 
     // empty the .container div, then add the appropriate data
     $('.container').children().fadeOut(300, displayUpdate);
-
+    $('#speechArrow').fadeOut(300);
 
     // empty the #trackingDiv, then add the appropriate data
     $('#trackingDiv').children().remove();
@@ -67,6 +67,8 @@ function displayPrevPerson() {
     var person = peopleArray[index];
 
     $('.container').children().fadeOut(300, displayUpdate);
+    $('#speechArrow').fadeOut(300);
+
     // setTimeout(displayUpdate, 350);
 
     // empty the #trackingDiv, then add the appropriate data
@@ -82,38 +84,39 @@ function displayPrevPerson() {
 function carouselTimeOut() {
     // console.log('carouselTimeOut called');
     // console.log('lastClicked:', lastClicked);
-    
-    
+
+
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
 
     // console.log('currentTime', currentTime);
-    
+
     if (currentTime > lastClicked + 9900) {
         displayNextPerson();
     }
 }
 
 // set lastClicked and update the display
-function nextClick(){
+function nextClick() {
     var currentTime = new Date();
     lastClicked = currentTime.getTime();
     displayNextPerson();
 }
 
-function prevClick(){
+function prevClick() {
     var currentTime = new Date();
     lastClicked = currentTime.getTime();
     displayPrevPerson();
 }
 
-function displayUpdate(){
+function displayUpdate() {
     var person = peopleArray[index];
     $('.container').hide();
     $('.container').children().remove();
     $('.container').append("<p class=\"shoutout\">\"" + person.shoutout + "\"</p>");
     $('.container').append("<p class=\"name\"> -- " + person.name + "</p>");
     $('.container').fadeIn(300);
+    $('#speechArrow').fadeIn(300);    
 }
 // execute code here
 $(document).ready(function () {

@@ -6,6 +6,13 @@ body {
     min-width: 500px;
 }
 
+#speechArrow {
+    position:relative;
+    left: 40px;
+    bottom: 20px;
+    display:none;
+}
+
 .container {
     /* height: 300px; */
     background-color: white;
