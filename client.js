@@ -41,9 +41,8 @@ function displayNextPerson() {
     var person = peopleArray[index];
 
     // empty the .container div, then add the appropriate data
-    $('.container').children().remove();
-    $('.container').append("<p class=\"shoutout\">\"" + person.shoutout + "\"</p>");
-    $('.container').append("<p class=\"name\"> -- " + person.name + "</p>");
+    $('.container').children().fadeOut(300, displayUpdate);
+
 
     // empty the #trackingDiv, then add the appropriate data
     $('#trackingDiv').children().remove();
@@ -67,9 +66,8 @@ function displayPrevPerson() {
 
     var person = peopleArray[index];
 
-    $('.container').children().remove(); // empty the #container div
-    $('.container').append("<p class=\"shoutout\">\"" + person.shoutout + "\"</p>");
-    $('.container').append("<p class=\"name\"> -- " + person.name + "</p>");
+    $('.container').children().fadeOut(300, displayUpdate);
+    // setTimeout(displayUpdate, 350);
 
     // empty the #trackingDiv, then add the appropriate data
     $('#trackingDiv').children().remove();
@@ -109,8 +107,18 @@ function prevClick(){
     displayPrevPerson();
 }
 
+function displayUpdate(){
+    var person = peopleArray[index];
+    $('.container').hide();
+    $('.container').children().remove();
+    $('.container').append("<p class=\"shoutout\">\"" + person.shoutout + "\"</p>");
+    $('.container').append("<p class=\"name\"> -- " + person.name + "</p>");
+    $('.container').fadeIn(300);
+}
 // execute code here
 $(document).ready(function () {
+
+
 
     displayNextPerson();
 

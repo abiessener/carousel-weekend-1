@@ -12,6 +12,7 @@ body {
     border-radius: 30px;
     padding: 10px;
     width: 35%;
+    display:none;
 }
 
 #trackingDiv {
