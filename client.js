@@ -120,7 +120,7 @@ $(document).ready(function () {
 
     // Start the timer for automatic cycling - later this will be called by itself or by displayNext Person()
     setTimeout(function(){        
-        carouselTimeOut(true);
+        carouselTimeOut();
     }, 10000);
 
     // Click handlers that call simple functions that set the lastClick global and then call the displayUpdate function to either next or previous dataset
@@ -138,19 +138,3 @@ $(document).ready(function () {
         }
     });
 });
-
-
-
-
-/* TODO
-
-* put speech arrow in jquery selector with container div to sync fades
-    - DONE, this helps a little bit
-
-* Wrap container and speecharrow in a div and fade that to REALLY sync fades
-    - I cannot for the life of me figure out how to do this. Trying to wrap both in a div makes that wrapper have a height of zero and thus nothing displays. Bah! 
-
-    - Hahaha, I was selecting the children of #container and not the div itself, so the div wasn't fading at all and it looked terrible. Shout out to Brendt for helping me find that!
-
-* add minimum width/height to background image while maintaining aspect ratio
- */
