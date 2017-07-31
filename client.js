@@ -59,7 +59,7 @@ function displayNextPerson(next) {
     var person = peopleArray[index];
 
     // fade out the content, then call the displayUpdate function to update the content and fade it in 
-    $('.container').children().add('#speechArrow').fadeOut({
+    $('.container').add('#speechArrow').fadeOut({
         queue: false,
         complete: displayUpdate
     });
@@ -131,6 +131,8 @@ $(document).ready(function () {
 
 * Wrap container and speecharrow in a div and fade that to REALLY sync fades
     - I cannot for the life of me figure out how to do this. Trying to wrap both in a div makes that wrapper have a height of zero and thus nothing displays. Bah! 
+
+    - Hahaha, I was selecting the children of #container and not the div itself, so the div wasn't fading at all and it looked terrible. Shout out to Brendt for helping me find that!
 
 * add minimum width/height to background image while maintaining aspect ratio
  */
