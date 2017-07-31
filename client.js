@@ -119,6 +119,15 @@ $(document).ready(function () {
     $('#nextButton').on('click', nextClick);
     $('#prevButton').on('click', prevClick);
 
+    $('html').keydown(event, function () {
+        // console.log('key');
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '39') {
+            nextClick();
+        } else if (keycode == '37') {
+            prevClick();
+        }
+    });
 });
 
 
