@@ -65,8 +65,7 @@ function displayNextPerson(next) {
     });
 
     // empty the #trackingDiv, then add the appropriate data
-    $('#trackingDiv').children().remove();
-    $('#trackingDiv').append("<p class=\"trackingP\">" + (index + 1) + "/" + peopleArray.length + "</p>");
+    $('#trackingDiv').html("<p class=\"trackingP\">" + (index + 1) + "/" + peopleArray.length + "</p>");
 
     // call the timeout function, so that the carousel will update if another button isn't clicked within 10 seconds
     setTimeout(carouselTimeOut, 10000);
@@ -82,9 +81,7 @@ function displayUpdate() {
 
     $content = $('.container').add('#speechArrow');
     $($content).hide();
-    $('.container').children().remove();
-    $('.container').append("<p class=\"shoutout\">\"" + person.shoutout + "\"</p>");
-    $('.container').append("<p class=\"name\"> -- " + person.name + "</p>");
+    $('.container').html("<p class=\"shoutout\">\"" + person.shoutout + "\"</p><p class=\"name\"> -- " + person.name + "</p>");
     $('.container').css('left', newXposition);
     $('.container').css('top', newYposition);
     $('#speechArrow').css('left', newXposition + 40);
@@ -115,9 +112,7 @@ function carouselTimeOut() {
 // execute code here
 $(document).ready(function () {
     // Display the first dataset
-    $('.container').children().remove();
-    $('.container').append("<p class=\"shoutout\">\"" + peopleArray[0].shoutout + "\"</p>");
-    $('.container').append("<p class=\"name\"> -- " + peopleArray[0].name + "</p>");
+    $('.container').html("<p class=\"shoutout\">\"" + peopleArray[0].shoutout + "\"</p><p class=\"name\"> -- " + peopleArray[0].name + "</p>");
     $('.container').add('#speechArrow').fadeIn();
 
     // Start the timer for automatic cycling - later this will be called by itself or by displayNext Person()
