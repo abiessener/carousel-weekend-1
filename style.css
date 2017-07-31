@@ -23,7 +23,6 @@ body {
 #speechArrow {
     position:relative;
     left: 40px;
-    top: 5px;
     display:none;
 }
 

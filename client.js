@@ -8,8 +8,8 @@
     }
 */
 
-// global index variable, because passing it around is a pain. starts at -1 so that we can immediately call displayNextPerson when the doc is ready
-var index = -1;
+// global index variable, because passing it around is a pain
+var index = 0;
 
 // global lastClicked variable, because passing it around is actively contrary to its usage
 var lastClicked = new Date();
@@ -114,11 +114,22 @@ function carouselTimeOut() {
 
 // execute code here
 $(document).ready(function () {
-    displayNextPerson(true);
+    // Display the first dataset
+    $('.container').children().remove();
+    $('.container').append("<p class=\"shoutout\">\"" + peopleArray[0].shoutout + "\"</p>");
+    $('.container').append("<p class=\"name\"> -- " + peopleArray[0].name + "</p>");
+    $('.container').add('#speechArrow').fadeIn();
 
+    // Start the timer for automatic cycling - later this will be called by itself or by displayNext Person()
+    setTimeout(function(){        
+        carouselTimeOut(true);
+    }, 10000);
+
+    // Click handlers that call simple functions that set the lastClick global and then call the displayUpdate function to either next or previous dataset
     $('#nextButton').on('click', nextClick);
     $('#prevButton').on('click', prevClick);
 
+    // Keypress handlers for left/right arrows with equivalent functionality to the next/prev buttons
     $('html').keydown(event, function () {
         // console.log('key');
         var keycode = (event.keyCode ? event.keyCode : event.which);
