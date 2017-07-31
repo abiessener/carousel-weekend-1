@@ -115,6 +115,9 @@ $(document).ready(function () {
     $('.container').html("<p class=\"shoutout\">\"" + peopleArray[0].shoutout + "\"</p><p class=\"name\"> -- " + peopleArray[0].name + "</p>");
     $('.container').add('#speechArrow').fadeIn();
 
+    // Set up the trackingDiv
+    $('#trackingDiv').html("<p class=\"trackingP\">" + (index + 1) + "/" + peopleArray.length + "</p>");
+
     // Start the timer for automatic cycling - later this will be called by itself or by displayNext Person()
     setTimeout(function(){        
         carouselTimeOut(true);
