@@ -1,3 +1,13 @@
+# Prime Assignment: Carousel
+
+This was the first weekend challenge assignment I completed during my time at Prime Academy. Looking back, I'm still pretty happy with what I put together into a unique take on the 'carousel' idea.
+
+This might be applicable someday, if I were to address the scaling issues (I'm not super-happy with how the page handles various browser shapes, particularly aspect ratios). But as a learning experience, it was great - building a frontend implementation of a simple requirement taught me plenty.
+
+---
+
+Original Prime assignment follows:
+
 # Weekend Challenge 01
 
 You'll be creating a carousel that will allow the user to move through an array of objects.
